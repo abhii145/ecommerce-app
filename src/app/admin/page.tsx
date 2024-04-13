@@ -15,7 +15,7 @@ async function getSalesData() {
     _sum: { pricePaidInCents: true },
     _count:true
   })
-  await wait(1000)
+  await wait(100)
   return {
     amount: (data._sum.pricePaidInCents || 0) / 100,
     numberOfSales:data._count
