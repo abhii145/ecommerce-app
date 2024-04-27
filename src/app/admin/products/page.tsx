@@ -12,8 +12,10 @@ import {
 } from "@/components/ui/table";
 import db from "@/db/db";
 import { formatCurrency, formatNumber } from "@/lib/formatters";
-import { CheckCircle2, MoreVertical, XCircle } from "lucide-react";
+import { CheckCircle2, MoreVertical, XCircle ,Check} from "lucide-react";
 import Image from "next/image";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { ActiveToggleDropdownItem, DeleteDropdownItem } from "./_components/ProductActions";
 
 const AdminProductPage = () => {
   return (
@@ -90,7 +92,7 @@ async function ProductsTable() {
               />
             </TableCell>
             <TableCell>
-              {/* <DropdownMenu>
+              <DropdownMenu>
                 <DropdownMenuTrigger>
                   <MoreVertical />
                   <span className="sr-only">Actions</span>
@@ -116,7 +118,7 @@ async function ProductsTable() {
                     disabled={product._count.orders > 0}
                   />
                 </DropdownMenuContent>
-              </DropdownMenu> */}
+              </DropdownMenu>
             </TableCell>
           </TableRow>
         ))}

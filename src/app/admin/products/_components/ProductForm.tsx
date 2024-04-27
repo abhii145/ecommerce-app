@@ -8,11 +8,14 @@ import { Product } from "@prisma/client";
 import { Textarea } from "@/components/ui/textarea";
 import { formatCurrency } from "@/lib/formatters";
 import { Button } from "@/components/ui/button";
-import { addProduct } from "../../_actions/products";
+import { addProduct, updateProduct } from "../../_actions/products";
 
 export function ProductForm({ product }: { product?: Product | null }) {
-  const [error, action] = useFormState(addProduct, {});
-  const [priceInCents, setPriceInCents] = useState<number | undefined>();
+  const [error, action] = useFormState(
+    product == null ? addProduct : updateProduct.bind(null, product.id),
+    {}
+  );
+  const [priceInCents, setPriceInCents] = useState<number | undefined>(product?.priceInCents);
 
   return (
     <form className="space-y-8" action={action}>
